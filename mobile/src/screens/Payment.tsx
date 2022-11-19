@@ -15,7 +15,7 @@ function Payment() {
                     end: [0, 1]
                 }
             }}
-            
+
 
             px={6}
         >
@@ -110,8 +110,9 @@ function Payment() {
             </ZStack>
 
             <Input
-            placeholder="Cardnumber"
-            pin
+                mt={6}
+                placeholder="Cardnumber"
+
             />
 
         </VStack>
