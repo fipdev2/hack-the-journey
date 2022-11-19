@@ -1,4 +1,5 @@
 import { Button as NBButton, IButtonProps, Text } from 'native-base'
+import React from 'react';
 
 interface ButtonProps extends IButtonProps {
     text: string,

@@ -1,8 +1,17 @@
 import { Box, VStack, Image, Text, Center, View, Icon } from "native-base";
 import Button from "../components/Button";
 import { Fontisto } from '@expo/vector-icons'
+import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/Auth";
+import React from "react";
+
 
 function SignIn() {
+    // const [isLoading, setIsLoading] = useState(false)
+
+    const { signIn, usuario, isUserLoading } = useContext(AuthContext)
+    console.log(usuario)
+
     return (
         <VStack
             flex={1}
@@ -56,9 +65,11 @@ function SignIn() {
                 opacity={0.22}
             />
             <Button
-            text="Sign in with Google"
-            mt={24}
-            leftIcon={<Icon as={Fontisto} name='google'/>}
+                text="Sign in with Google"
+                mt={24}
+                leftIcon={<Icon as={Fontisto} name='google' />}
+                isLoading={isUserLoading}
+                onPress={() => signIn()}
             />
         </VStack>
     );
