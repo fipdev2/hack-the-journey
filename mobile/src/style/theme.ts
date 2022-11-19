@@ -8,9 +8,9 @@ export const THEME = extendTheme({
         lightblue:'#7FB4E4'
 	},
 	fonts: {
-		heading: 'Roboto_700Bold',
-		body: 'Roboto_400Regular',
-		medium: 'Roboto_500Medium',
+		heading: 'Ubuntu_700Bold',
+		body: 'Ubuntu_400Regular',
+		thin: 'Ubuntu_300Light',
 	},
 	fontSizes: {
 		xs: 12,
