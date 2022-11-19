@@ -6,7 +6,8 @@ import SignIn from './src/screens/SignIn';
 import { useFonts, Ubuntu_300Light, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu'
 import { THEME } from './src/style/theme'
 import Loading from './src/components/Loading';
-import Explore from './src/screens/Explore';
+import ExploreJapan from './src/screens/ExploreJapan';
+import ExploreFrance from './src/screens/ExploreFrance';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Ubuntu_300Light, Ubuntu_400Regular, Ubuntu_700Bold })
@@ -17,7 +18,7 @@ export default function App() {
         backgroundColor={'transparent'}
         style={'light'}
       />
-      {fontsLoaded ? <Explore /> : <Loading/>}
+      {fontsLoaded ? <ExploreFrance /> : <Loading/>}
       {/* <Loading/> */}
       
     </NativeBaseProvider>

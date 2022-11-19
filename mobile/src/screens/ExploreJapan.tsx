@@ -1,11 +1,11 @@
-import { Box, VStack, Image, Text, Stack, Container, View, Icon, IconButton } from "native-base";
+import {VStack, Image, Text, Stack, Container, View, Icon } from "native-base";
 import React from "react";
 import Button from "../components/Button";
 import {FontAwesome5, SimpleLineIcons } from '@expo/vector-icons'
 import { TouchableOpacity } from "react-native";
 
 
-function Explore() {
+function ExploreJapan() {
 
     return (
         <VStack
@@ -46,9 +46,9 @@ function Explore() {
                 </View>
 
                 <Image
-                    width={'228'}
-                    height={'481'}
-                    source={require('../assets/Paris.png')}
+                    width={'294'}
+                    height={'484'}
+                    source={require('../assets/Japan.png')}
                     alt='logo' />
                 <View justifyContent={'center'}>
                     <TouchableOpacity>
@@ -64,6 +64,13 @@ function Explore() {
                     </TouchableOpacity>
                 </View>
             </View>
+            <Text 
+                fontFamily={'heading'}
+                color={'white'}
+                fontSize={'xl'}
+                >
+                Japan
+            </Text>
 
             <Button
                 text="Confirm Location"
@@ -84,4 +91,4 @@ function Explore() {
 
     )
 }
-export default Explore;
+export default ExploreJapan;
