@@ -1,8 +1,11 @@
-import { Box, VStack, Image, Text, Button, Stack, Container, View, Icon } from "native-base";
+import { Box, VStack, Image, Text, Stack, Container, View, Icon, IconButton } from "native-base";
 import React from "react";
+import Button from "../components/Button";
+import {FontAwesome5, SimpleLineIcons } from '@expo/vector-icons'
+import { TouchableOpacity } from "react-native";
 
 
-function Explore () {
+function Explore() {
 
     return (
         <VStack
@@ -15,33 +18,70 @@ function Explore () {
                 }
             }}
             justifyContent={'space-around'}
-            
+            alignItems={'center'}
+
         >
-            <Container alignItems={'center'} marginTop='84'>
-                <Text fontSize={'lg'} fontFamily={'heading'} color='white'>Explore</Text>
-        
+            <Container marginTop='10%'>
+                <Text
+                    fontSize={'lg'}
+                    fontFamily={'thin'}
+                    color='white'>
+
+                    Explore
+
+                </Text>
+
             </Container>
-            <View 
-            alignItems={'center'}>
-            <Image 
-            width={'228'} 
-            height={'481'} 
-            source={require('../assets/Paris.png')} 
-            alt='logo'/>
+            <View flexDirection={'row'} justifyContent={'space-between'}>
+                <View justifyContent={'center'}>
+                    <TouchableOpacity>
+                        <Icon
+                            as={FontAwesome5}
+                            name={'chevron-circle-left'}
+                            size={'xl'}
+                            opacity={'0.5'}
+
+                        />
+                    </TouchableOpacity>
+                </View>
+
+                <Image
+                    width={'228'}
+                    height={'481'}
+                    source={require('../assets/Paris.png')}
+                    alt='logo' />
+                <View justifyContent={'center'}>
+                    <TouchableOpacity>
+                        <Icon
+
+                            as={FontAwesome5}
+                            name={'chevron-circle-right'}
+                            size={'xl'}
+                            opacity={'0.5'}
+
+
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View 
-            alignItems={'center'} 
-            justifyContent={'flex-end'}>
-            <Button  
-            alignItems="center" 
-            colorScheme='lightBlue' 
-            width='295'>Confirm Location
-            </Button>
-            </View>
+
+            <Button
+                text="Confirm Location"
+                mt={2}
+                leftIcon={<Icon as={SimpleLineIcons} name='location-pin' />}
+                width={'67%'}
+                borderRadius={'10'}
+                fontSize={'21'}
+
+
+            />
+
+
+
 
         </VStack>
 
 
     )
 }
- export default Explore;
+export default Explore;
