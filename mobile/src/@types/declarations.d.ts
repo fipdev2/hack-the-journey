@@ -22,6 +22,7 @@ export declare global {
       airport: undefined
       explorefrance: undefined
       metaguide: undefined
+      availableflights: undefined
     }
   }
 }

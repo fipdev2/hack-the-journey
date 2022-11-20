@@ -79,8 +79,6 @@ function ExploreFrance() {
                 width={'67%'}
                 borderRadius={'10'}
                 fontSize={'21'}
-
-
             />
 
 

@@ -20,6 +20,11 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@fastify/jwt": "^6.3.3",
+<<<<<<< HEAD
+=======
+    "@prisma/client": "^4.6.1",
+    "amadeus": "^7.1.0",
+>>>>>>> 0aa4485015b25d37c495db2dec1d99e18d37ad95
     "fastify": "^4.10.0",
     "zod": "^3.19.1"
   }

@@ -18,11 +18,11 @@ function SearchFlights() {
     const [dataDeIda, setDataDeIda] = useState('')
     const [dataDeVolta, setDataDeVolta] = useState('')
     const { navigate } = useNavigation()
-    
+
     const toast = useToast()
 
     function createFlightData() {
-        
+
 
         const flightData = {
             origem,
@@ -31,33 +31,56 @@ function SearchFlights() {
             dataDeVolta
         }
 
-        if (!origem.trim()) {
-            return toast.show({
-                title: 'Please inform an origin',
-                bgColor: 'red.500',
+        try {
+            if (!origem.trim()) {
+                return toast.show({
+                    title: 'Please inform an origin',
+                    bgColor: 'red.500',
+                    placement: 'top'
+                })
+            }
+            if (!destino.trim()) {
+                return toast.show({
+                    title: 'Please inform a destination',
+                    bgColor: 'red.500',
+                    placement: 'top'
+                })
+            }
+            if (!dataDeIda.trim()) {
+                return toast.show({
+                    title: 'Please inform a departure date',
+                    bgColor: 'red.500',
+                    placement: 'top'
+                })
+            }
+            toast.show({
+                title: 'Exibiting available flights',
                 placement: 'top'
             })
+            setOrigem('')
+            setDestino('')
+            setDataDeIda('')
+            setDataDeVolta('')
+            navigate('availableflights', flightData)
         }
-        if (!destino.trim()) {
-            return toast.show({
-                title: 'Please inform a destination',
-                bgColor: 'red.500',
-                placement: 'top'
+        catch (e) {
+            console.log(e)
+            toast.show({
+                title: 'An error occured during the submition',
+                placement: 'top',
+                bgColor: 'red.500'
             })
+
         }
-        if (!dataDeIda.trim()) {
-            return toast.show({
-                title: 'Please inform a departure date',
-                bgColor: 'red.500',
-                placement: 'top'
-            })
-        }
-        toast.show({
-            title: 'Exibiting available flights',
-            placement: 'top'
-        })
-        navigate('availableflights', flightData)
     }
+
+
+    React.useEffect(() => {
+        setOrigem('')
+        setDestino('')
+        setDataDeIda('')
+        setDataDeVolta('')
+    }, [])
 
     return (
         <VStack
