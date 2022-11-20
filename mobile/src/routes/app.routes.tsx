@@ -3,6 +3,10 @@ import SignIn from '../screens/SignIn';
 import * as React from 'react';
 import Payment from '../screens/Payment';
 import SearchFlights from '../screens/SearchFlights';
+import FlightConfirm from '../screens/FlightConfirm';
+import MetaGuide from '../screens/MetaGuide';
+import Airport from '../screens/Airport';
+import ExploreFrance from '../screens/ExploreFrance';
 
 
 
@@ -16,16 +20,42 @@ function AppRoutes() {
         >
 
             <Screen
-                name='signin'
-                component={SignIn}
-            />
-            <Screen
                 name='payment'
                 component={Payment}
+                options={{
+                    tabBarButton: () => null
+                }}
             />
             <Screen
                 name='searchflights'
                 component={SearchFlights}
+                options={{
+                    tabBarButton: () => null
+                }}
+            />
+            <Screen
+                name='flightconfirm'
+                component={FlightConfirm}
+                options={{
+                    tabBarButton: () => null
+                }}
+            />
+            <Screen
+                name='metaguide'
+                component={MetaGuide}
+            />
+            <Screen
+                name='airport'
+                component={Airport}
+
+            />
+            <Screen
+                name='explorefrance'
+                component={ExploreFrance}
+                options={{
+                    tabBarButton: () => null
+                }}
+
             />
 
 

@@ -2,7 +2,8 @@ import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
 
-import {rotasPassagem} from './routes/ticket'
+import { rotasPassagem } from './routes/ticket';
+import { authRotas } from './routes/auth'
 
 async function start() {
     const fastify = Fastify({
@@ -17,6 +18,10 @@ async function start() {
         secret: 'hackthejourney',
     })
 
-    await fastify.listen({ port: 3333 })
+    await fastify.register(rotasPassagem)
+    await fastify.register(authRotas)
+
+
+    await fastify.listen({ port: 3333, host: '0.0.0.0' })
 }
 start()

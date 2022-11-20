@@ -14,11 +14,14 @@ export declare global {
       payment: undefined;
       searchflights: undefined;
       availableflights: {
-        origem:string
-        destino:string
-        dataDeIda:string
-        dataDeVolta:string
-      }
+        origem: string
+        destino: string
+        dataDeIda: string
+        dataDeVolta: string
+      },
+      airport: undefined
+      explorefrance: undefined
+      metaguide: undefined
     }
   }
 }

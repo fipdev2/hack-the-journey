@@ -9,9 +9,7 @@ export async function rotasPassagem(fastify: FastifyInstance) {
         { onRequest: [authenticate] }
         , async (req, res) => {
 
-            const createPassagemParams = z.object({
-                id: z.string()
-            })
+          
             const createPassagemBody = z.object({
                 origem: z.string(),
                 destino: z.string(),
@@ -20,13 +18,7 @@ export async function rotasPassagem(fastify: FastifyInstance) {
                 valor: z.string(),
                 formaDePagamento: z.string(),
             })
-            const { id } = createPassagemParams.parse(req.params)
-
-            const novaPassagem = await prisma.passagem.findUnique({
-                where: {
-                    id: id
-                }
-            })
+           
 
             const { origem, destino, dataDeIda, dataDeVolta, valor, formaDePagamento } = createPassagemBody.parse(req.body)
 
@@ -40,23 +32,31 @@ export async function rotasPassagem(fastify: FastifyInstance) {
 
             if (!usuario) {
                 return res.status(400).send({
-                    msg: 'Você naõ tem permissão p/ efetuar esse pagamento'
+                    message: 'Você naõ tem permissão p/ efetuar esse pagamento'
                 })
             }
 
 
-            await prisma.passagem.create({
-                data: {
-                    id,
-                    origem,
-                    destino,
-                    dataDeIda,
-                    dataDeVolta,
-                    valor,
-                    formaDePagamento,
-                    usuarioId: usuario.id
-                }
-            })
+            try {
+                await prisma.passagem.create({
+                    data: {
+                        origem,
+                        destino,
+                        dataDeIda,
+                        dataDeVolta,
+                        valor,
+                        formaDePagamento,
+                        usuarioId: usuario.id,
+                    }
+                })
+                return res.status(200).send('Passagem comprada com sucesso!')
+            }
+            catch (e) {
+                console.log(e)
+                return res.status(500).send('Não foi possível efetuar o pagamento!')
+            }
+
+
         })
 
 }

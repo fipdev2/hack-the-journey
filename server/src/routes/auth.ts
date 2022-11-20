@@ -3,7 +3,7 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { authenticate } from "../plugins/authenticate";
 
-export async function authRoutes(fastify: FastifyInstance) {
+export async function authRotas(fastify: FastifyInstance) {
     fastify.get('/eu',{
       onRequest:[authenticate],  
     }, async (req) => {
@@ -31,7 +31,6 @@ export async function authRoutes(fastify: FastifyInstance) {
             id: z.string(),
             email: z.string().email(),
             name: z.string(),
-            picture: z.string().url(),
         })
         const userInfo = userInfoSchema.parse(userData)
 

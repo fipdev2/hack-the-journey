@@ -21,7 +21,7 @@ export function Header({ title, mostraBotao = false }: Props) {
             {
                 mostraBotao ?
 
-                    <TouchableOpacity onPress={() => navigate('payment')} >
+                    <TouchableOpacity onPress={() => navigate('metaguide')} >
                         <Icon as={Feather} name='chevron-left' size={'2xl'} color='white' />
                     </TouchableOpacity>
                     :

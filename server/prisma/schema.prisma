@@ -26,8 +26,8 @@ model Passagem {
   dataDeIda        String
   dataDeVolta      String
   valor            String
-  formaDePagamento String?
-  usuarioId        String
+  formaDePagamento String? 
+  usuarioId        String   
   criadoEm         DateTime @default(now())
   usuario          Usuario  @relation(fields: [usuarioId], references: [id])
 }

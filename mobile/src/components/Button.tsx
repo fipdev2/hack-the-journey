@@ -9,16 +9,16 @@ interface ButtonProps extends IButtonProps {
 function Button({ text, ...rest }: ButtonProps) {
     return (
         <NBButton
-        w={'full'}
-        h={12}
-        bg={'lightblue'}
+            w={'full'}
+            h={12}
+            bg={'lightblue'}
             _loading={{ _spinner: { color: 'white' } }}
             {...rest}
         >
             <Text
-            fontFamily={'heading'}
-            fontSize={'18'}
-            color='white'
+                fontFamily={'heading'}
+                fontSize={18}
+                color='white'
             >
                 {text}
             </Text>

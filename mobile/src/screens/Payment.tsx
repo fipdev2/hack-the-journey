@@ -9,10 +9,10 @@ import { api } from "../services/api";
 
 
 function Payment() {
-    const [cardNumber, setCardNumber] = useState('');
-    const [cardholder, setCardHolder] = useState('')
-    const [expiration, setExpiration] = useState('')
-    const [cvc, setCvc] = useState('')
+    const [cardNumber, setCardNumber] = useState('0000 0000 0000 0000');
+    const [cardholder, setCardHolder] = useState('xxxxxxxxx')
+    const [expiration, setExpiration] = useState('MM/AA')
+    const [cvc, setCvc] = useState('000')
 
     const [isLoading, setIsLoading] = useState(false)
     const toast = useToast()
@@ -23,7 +23,8 @@ function Payment() {
             destino: '',
             dataDeIda: '',
             dataDeVolta: '',
-            valor: '',
+            formaDePagamento: 'cartão de crédito',
+            valor: '10000',
         }
         try {
             setIsLoading(true)
@@ -161,6 +162,7 @@ function Payment() {
                             w={30}
                             h={25}
                             ml={32}
+                            alt='card chip'
                         />
 
                     </HStack>
