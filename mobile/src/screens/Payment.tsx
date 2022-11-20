@@ -1,13 +1,71 @@
 import { BlurView } from "@react-native-community/blur";
-import { Box, Image, VStack, ZStack, Text, HStack } from "native-base";
-import React from "react";
+import { Box, Image, VStack, ZStack, Text, HStack, Icon, useToast } from "native-base";
+import React, { useState } from "react";
+import Button from "../components/Button";
 import { Header } from "../components/Header";
 import Input from "../components/Input";
+import { Fontisto } from '@expo/vector-icons'
+import { api } from "../services/api";
 
 
 function Payment() {
+    const [cardNumber, setCardNumber] = useState('');
+    const [cardholder, setCardHolder] = useState('')
+    const [expiration, setExpiration] = useState('')
+    const [cvc, setCvc] = useState('')
+
+    const [isLoading, setIsLoading] = useState(false)
+    const toast = useToast()
+
+    async function createPayment() {
+        const payment = {
+            origem: '',
+            destino: '',
+            dataDeIda: '',
+            dataDeVolta: '',
+            valor: '',
+        }
+        try {
+            setIsLoading(true)
+            if (!cardNumber.trim()) {
+                return toast.show({
+                    bgColor: 'red.500',
+                    title: 'Invalid card number',
+                    placement: 'top'
+                })
+            }
+            if (!cardholder.trim()) {
+                return toast.show({
+                    bgColor: 'red.500',
+                    title: 'Please inform your name',
+                    placement: 'top'
+                })
+            }
+            await api.post('/passagem', payment)
+            toast.show({
+                bgColor: 'green.500',
+                title: 'Payment completed successfully',
+                placement: 'top'
+            })
+
+        }
+        catch (e) {
+            console.log(e)
+            toast.show({
+                bgColor: 'red.500',
+                title: 'An error occured during the payment proccess',
+                placement: 'top'
+            })
+        }
+        finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
-        <VStack flex={1}
+        <VStack
+            flex={1}
+
             bg={{
                 linearGradient: {
                     colors: ['darkpurple', 'middleblue'],
@@ -51,7 +109,7 @@ function Payment() {
                         mt={16}
                         letterSpacing='2xl'
                         fontFamily={'heading'}
-                    >1234 5678 9012 3456</Text>
+                    >{cardNumber}</Text>
                     <Text
                         color='white'
                         fontSize='10'
@@ -64,7 +122,7 @@ function Payment() {
                         fontSize='16'
                         fontFamily={'heading'}
                     >
-                        Rian Valente
+                        {cardholder}
                     </Text>
                     <HStack alignItems={"flex-end"} w='full'>
                         <VStack>
@@ -80,7 +138,7 @@ function Payment() {
                                 fontSize='16'
                                 fontFamily={'heading'}
                             >
-                                14/10
+                                {expiration}
                             </Text>
                         </VStack>
                         <VStack ml={8}>
@@ -96,7 +154,7 @@ function Payment() {
                                 fontSize='16'
                                 fontFamily={'heading'}
                             >
-                                123
+                                {cvc}
                             </Text>
                         </VStack>
                         <Image source={require('../assets/chip.png')}
@@ -110,11 +168,48 @@ function Payment() {
             </ZStack>
 
             <Input
-                mt={6}
+                mt={8}
                 placeholder="Cardnumber"
-
+                onChangeText={setCardNumber}
             />
 
+            <Input
+                mt={8}
+                placeholder="Cardholder name"
+                onChangeText={setCardHolder}
+            />
+
+            <HStack mt={8} w='full'>
+                <Input
+                    flex={1}
+                    placeholder="Expiration date"
+                    onChangeText={setExpiration}
+                    mr={1}
+                />
+                <Input
+                    flex={1}
+                    ml={1}
+                    placeholder="CVC"
+                    onChangeText={setCvc}
+                />
+            </HStack>
+            <Box
+                my={8}
+                height='px'
+                width='full'
+                bgColor='white'
+                opacity={0.22}
+            />
+            <Button
+                onPress={createPayment}
+                text={"Buy ticket!"}
+                rightIcon={
+                    <Icon
+                        as={Fontisto}
+                        name="plane-ticket"
+                        size='2xl'
+                    />
+                } />
         </VStack>
     );
 }

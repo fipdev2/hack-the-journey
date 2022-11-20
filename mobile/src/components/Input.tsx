@@ -1,18 +1,24 @@
-import { Box, HStack, Icon, Input as NBInput } from 'native-base'
+import { Box, HStack, Icon, IInputProps, Input as NBInput } from 'native-base'
 import React from 'react';
 import { FontAwesome5, Fontisto, MaterialIcons } from '@expo/vector-icons'
-import { TextInput } from 'react-native';
-import { InterfaceHStackProps } from 'native-base/lib/typescript/components/primitives/Stack/HStack';
+import { IHStackProps, InterfaceHStackProps } from 'native-base/lib/typescript/components/primitives/Stack/HStack';
+import { IInputComponentType } from 'native-base/lib/typescript/components/primitives/Input/types';
 
-interface InputProps extends InterfaceHStackProps {
+
+interface InputProps extends IHStackProps {
     placeholder: string;
     date?: boolean;
     plane?: boolean;
     pin?: boolean;
+    value?: string;
+    onChangeText?: (text: string) => void
 }
 
 
-function Input({ placeholder, date, plane, pin,...rest}: InputProps) {
+
+function Input({ placeholder, date, plane, pin, onChangeText, value, ...rest }: InputProps,
+    { ...all }: IInputComponentType
+) {
     return (
         <HStack w='full'
             borderWidth={1}
@@ -31,7 +37,12 @@ function Input({ placeholder, date, plane, pin,...rest}: InputProps) {
                 borderWidth={0}
                 bgColor='none'
                 w='full'
-                color='white' />
+                color='white'
+                fontSize={16}
+                onChangeText={onChangeText}
+                value={value}
+                {...all}
+            />
         </HStack>
 
     );

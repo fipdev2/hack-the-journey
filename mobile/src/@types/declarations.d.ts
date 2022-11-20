@@ -9,9 +9,16 @@ declare module '*.png'
 
 export declare global {
   namespace ReactNavigation {
-      interface RootParamList {
-          signin: undefined;
-          payment: undefined;
+    interface RootParamList {
+      signin: undefined;
+      payment: undefined;
+      searchflights: undefined;
+      availableflights: {
+        origem:string
+        destino:string
+        dataDeIda:string
+        dataDeVolta:string
       }
+    }
   }
 }

@@ -16,21 +16,25 @@ interface Props {
 export function Header({ title, mostraBotao = false }: Props) {
     const { navigate } = useNavigation();
     return (
-        <ZStack w="full" h={24} bgColor="darkpurple" pb={5} mt={20}>
+        <ZStack w="full" h={24} pb={5} mt={20}>
             {/* <HStack w="full" alignItems="center"> */}
-                {
-                    mostraBotao ?
+            {
+                mostraBotao ?
 
-                        <TouchableOpacity onPress={() => navigate('payment')} >
-                            <Icon as={Feather} name='chevron-left' size={'2xl'} color='white' />
-                        </TouchableOpacity>
-                        :
-                        <Box w={6} h={6} />
-                }
+                    <TouchableOpacity onPress={() => navigate('payment')} >
+                        <Icon as={Feather} name='chevron-left' size={'2xl'} color='white' />
+                    </TouchableOpacity>
+                    :
+                    <Box w={6} h={6} />
+            }
 
-                <Text color="white" fontFamily="heading" fontSize="24" textAlign="center" alignSelf={'center'}>
-                    {title}
-                </Text>
+            <Text color="white"
+                fontFamily="heading"
+                fontSize="24"
+                textAlign="center"
+                alignSelf={'center'}>
+                {title}
+            </Text>
             {/* </HStack> */}
         </ZStack>
     );
