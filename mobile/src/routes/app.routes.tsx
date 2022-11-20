@@ -7,6 +7,7 @@ import FlightConfirm from '../screens/FlightConfirm';
 import MetaGuide from '../screens/MetaGuide';
 import Airport from '../screens/Airport';
 import ExploreFrance from '../screens/ExploreFrance';
+import AvailableFlights from '../screens/AvailableFlights';
 
 
 
@@ -53,6 +54,14 @@ function AppRoutes() {
             <Screen
                 name='explorefrance'
                 component={ExploreFrance}
+                options={{
+                    tabBarButton: () => null
+                }}
+
+            />
+            <Screen
+                name='availableflights'
+                component={AvailableFlights}
                 options={{
                     tabBarButton: () => null
                 }}
