@@ -18,6 +18,16 @@ function AppRoutes() {
                 headerShown: false
             }}
         >
+            <Screen
+                name='metaguide'
+                component={MetaGuide}
+            />
+
+            <Screen
+                name='airport'
+                component={Airport}
+
+            />
 
             <Screen
                 name='payment'
@@ -39,15 +49,6 @@ function AppRoutes() {
                 options={{
                     tabBarButton: () => null
                 }}
-            />
-            <Screen
-                name='metaguide'
-                component={MetaGuide}
-            />
-            <Screen
-                name='airport'
-                component={Airport}
-
             />
             <Screen
                 name='explorefrance'

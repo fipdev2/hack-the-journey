@@ -32,6 +32,7 @@ function Airport() {
             >
                 <Button
                     text='Search flights'
+                    onPress={() => navigate('searchflights')}
                 />
 
                 <Button
@@ -45,6 +46,3 @@ function Airport() {
 
 export default Airport;
 
-function usenavigation(): { navigate: any; } {
-    throw new Error('Function not implemented.');
-}
