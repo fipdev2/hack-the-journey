@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "mobile",
+    "name": "Hack the Journey",
+    "owner": "brunopavese",
     "slug": "mobile",
     "scheme":"mobile",
     "version": "1.0.0",
