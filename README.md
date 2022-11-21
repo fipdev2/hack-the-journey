@@ -53,7 +53,10 @@ Crie uma conta em https://console.cloud.google.com/getting-started
 
 
 ####Mobile-app
-Antes de rodar o app, certifique-se de ter um aparelho android conectado a sua rede wifi, ou um emulador aberto. Com emulador aberto, no terminal digite 
+Antes de rodar o app, certifique-se de ter um aparelho android conectado a sua rede wifi, ou um emulador aberto.
+Dentro do diretório /mobile procure a pasta /services e configure o api.ts passando o endereço do servidor e a porta do back-end e da api
+ Com emulador aberto, no terminal digite 
+
 ```
 expo start
 
