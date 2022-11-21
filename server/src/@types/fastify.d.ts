@@ -7,4 +7,8 @@ declare module '@fastify/jwt' {
             nome: string;
         }
     }
+    interface routeParams {
+        parameter: string
+
+    }
 }
